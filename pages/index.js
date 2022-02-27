@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Section from '../components/Section';
+import Navbar from '../components/Navbar';
 
 export const getStaticProps = async() => {
 
@@ -57,11 +58,12 @@ const filterVideos = (videos, genre) => {
 
 // recommended videos
 const unSeenVideos = (videos) => {
-  return videos.filter(video => video.seen == false || video.seen == null)
+  return videos.filter(video => video.seen === false || video.seen === null)
 }
 
   return (
     <>
+      <Navbar />
       <div className="app">
         <div className="main-video">
           <img src={randomVideo(videos).thumbnail.url} 
