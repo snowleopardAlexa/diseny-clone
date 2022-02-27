@@ -64,13 +64,13 @@ const filterVideos = (videos, genre) => {
         </div>
         <div className="video-feed">
          <Section genre={"Family"} videos={filterVideos(videos, 'Family')} />
-         <Section genre={"Adventure"} videos={videos} />
-         <Section genre={"Marvel"} videos={videos} />
-         <Section genre={"Disney"} videos={videos} />
-         <Section genre={"Pixar"} videos={videos} />
-         <Section genre={"Classic"} videos={videos} />
-         <Section genre={"Thriller"} videos={videos} />
-         <Section genre={"Star Wars"} videos={videos} />
+         <Section genre={"Adventure"} videos={filterVideos(videos, 'Adventure')} />
+         <Section genre={"Marvel"} videos={filterVideos(videos, 'Marvel')} />
+         <Section genre={"Disney"} videos={filterVideos(videos, 'Disney')} />
+         <Section genre={"Pixar"} videos={filterVideos(videos, 'Pixar')} />
+         <Section genre={"Classic"} videos={filterVideos(videos, 'Classic')} />
+         <Section genre={"Thriller"} videos={filterVideos(videos, 'Thriller')} />
+         <Section genre={"Drama"} videos={filterVideos(videos, 'Drama')} />
       </div>
       </div>
     </>
