@@ -46,7 +46,7 @@ return {
 export default function Home({ videos}) {
 
 // display random video
-const randomVideo = (vidoes) => {
+const randomVideo = (videos) => {
   return videos[Math.floor(Math.random() * videos.length)]
 }
 
@@ -59,17 +59,18 @@ const filterVideos = (videos, genre) => {
     <>
       <div className="app">
         <div className="main-video">
-          <img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title} />
+          <img src={randomVideo(videos).thumbnail.url} 
+           alt={randomVideo(videos).title} />
         </div>
         <div className="video-feed">
-         <Section genre={"Family"} videos={filterVideos(videos, 'family')} />
-         <Section genre={"National Geographic"} />
-         <Section genre={"Marvel"} />
-         <Section genre={"Disney"} />
-         <Section genre={"Pixar"} />
-         <Section genre={"Classic"} />
-         <Section genre={"Thriller"} />
-         <Section genre={"Star Wars"} />
+         <Section genre={"Family"} videos={filterVideos(videos, 'Family')} />
+         <Section genre={"Adventure"} videos={videos} />
+         <Section genre={"Marvel"} videos={videos} />
+         <Section genre={"Disney"} videos={videos} />
+         <Section genre={"Pixar"} videos={videos} />
+         <Section genre={"Classic"} videos={videos} />
+         <Section genre={"Thriller"} videos={videos} />
+         <Section genre={"Star Wars"} videos={videos} />
       </div>
       </div>
     </>
