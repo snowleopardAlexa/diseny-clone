@@ -55,6 +55,11 @@ const filterVideos = (videos, genre) => {
   return videos.filter((video) => video.tags.includes(genre))
 }
 
+// recommended videos
+const unSeenVideos = (videos) => {
+  return videos.filter(video => video.seen == false || video.seen == null)
+}
+
   return (
     <>
       <div className="app">
@@ -63,6 +68,7 @@ const filterVideos = (videos, genre) => {
            alt={randomVideo(videos).title} />
         </div>
         <div className="video-feed">
+         <Section genre={"Recommended for you"} videos={unSeenVideos(videos)} />
          <Section genre={"Family"} videos={filterVideos(videos, 'Family')} />
          <Section genre={"Adventure"} videos={filterVideos(videos, 'Adventure')} />
          <Section genre={"Marvel"} videos={filterVideos(videos, 'Marvel')} />
