@@ -1,7 +1,7 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Section from '../components/Section';
 import Navbar from '../components/Navbar';
-import { defineArguments } from 'graphql/type/definition';
+
 
 export const getStaticProps = async() => {
 
@@ -36,7 +36,7 @@ const videosQuery = gql `
 // account data
 const accountQuery = gql `
 query {
-  account(where: {id: "cl041up9ql5yx0aodxjhsdald"} {
+  account(where: {id: "cl041up9ql5yx0aodxjhsdald"}) {
     username
     avatar {
       url
@@ -55,6 +55,7 @@ const account = accountData.account
 return {
   props: {
     videos,
+    account
   }
  }
 }
@@ -78,7 +79,7 @@ const unSeenVideos = (videos) => {
 
   return (
     <>
-      <Navbar account={{account}} />
+      <Navbar account={account} />
       <div className="app">
         <div className="main-video">
           <img src={randomVideo(videos).thumbnail.url} 
