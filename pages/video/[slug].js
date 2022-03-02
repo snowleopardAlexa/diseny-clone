@@ -56,27 +56,31 @@ const Video = ({ video }) => {
   const [watching, setWatching] = useState(false)
   
   console.log(video)
-  
+
   return (
     <>
-      <img className="video-image" src={video.thumbnail.url} alt={video.title} />
-      <div className="info">
-        <p>{video.tags.join(', ')}</p>
-        <p>{video.description}</p>
-        <a href="/"><p>go back</p></a>
+      {!watching && <img className="video-image" src={video.thumbnail.url} alt={video.title} />}
+      {!watching && <div className="info">
+        <p className="tags">{video.tags.join(', ')}</p>
+        <p className="desc">{video.description}</p>
+        <a href="/"><p className="go-back">GO BACK</p></a>
         <button 
-          className={"video-overlay"}
+          className={"btn-play"}
           onClick={() => {
             watching ? setWatching(false) : setWatching(true)
           }}
         >PLAY
        </button>
-      </div>
+      </div>}
       {watching && (
         <video width="100%" controls>
           <source src={video.mp4.url} type="video/mp4" />
         </video>
       )}
+      <div className={"info-footer"}
+          onClick={() => watching ? setWatching(false) : null}
+      >
+      </div>
     </>
   )
 }
