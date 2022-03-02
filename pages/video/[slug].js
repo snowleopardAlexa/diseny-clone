@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { gql, GraphQLClient } from 'graphql-request';
+
 
 export const getServerSideProps = async(pageContext) => {
 
@@ -50,9 +52,36 @@ return {
 }
     
 const Video = ({ video }) => {
-    console.log(video)
+
+  const [watching, setWatching] = useState(false)
+  
+  console.log(video)
+
   return (
-      <div></div>
+    <>
+      {!watching && <img className="video-image" src={video.thumbnail.url} alt={video.title} />}
+      {!watching && <div className="info">
+        <p className="tags">{video.tags.join(', ')}</p>
+        <p className="desc">{video.description}</p>
+        <a href="/"><p className="go-back">GO BACK</p></a>
+        <button 
+          className={"btn-play"}
+          onClick={() => {
+            watching ? setWatching(false) : setWatching(true)
+          }}
+        >PLAY
+       </button>
+      </div>}
+      {watching && (
+        <video width="100%" controls>
+          <source src={video.mp4.url} type="video/mp4" />
+        </video>
+      )}
+      <div className={"info-footer"}
+          onClick={() => watching ? setWatching(false) : null}
+      >
+      </div>
+    </>
   )
 }
 
