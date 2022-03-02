@@ -7,7 +7,7 @@ const Navbar = ({ account }) => {
     <div className="navbar">
       <Link href="/"><Image src={logo} alt={"Disney Logo"} width={120} height={50}></Image></Link>
       <div className="account-info">
-        <p>Welcome {account.username}</p>
+        <p className="username">{account.username}</p>
         <img className="avatar" src={account.avatar.url} />
       </div>
     </div>
