@@ -67,7 +67,7 @@ const Video = ({ video }) => {
   console.log(video)
 
   return (
-    <>
+    <div className="slug">
       {!watching && <img className="video-image" src={video.thumbnail.url} alt={video.title} />}
       {!watching && <div className="info">
         <p className="tags">{video.tags.join(', ')}</p>
@@ -91,7 +91,7 @@ const Video = ({ video }) => {
           onClick={() => watching ? setWatching(false) : null}
       >
       </div>
-    </>
+    </div>
   )
 }
 

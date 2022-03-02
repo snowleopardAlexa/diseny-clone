@@ -3,9 +3,9 @@ import Section from '../components/Section';
 import Navbar from '../components/Navbar';
 import Link from 'next/link';
 import Image from 'next/image';
-import disneyLogo from '../public/disney.jpeg';
-//import marvelLogo from '../public/marvel.jpeg';
-//import pixarLogo from '../public/pixar.jpg';
+import disneyLogo from '../public/disney3.jpeg';
+import marvelLogo from '../public/marvel.jpeg';
+import pixarLogo from '../public/pixar2.jpeg';
 
 export const getStaticProps = async() => {
 
@@ -96,13 +96,28 @@ const unSeenVideos = (videos) => {
            <Image src={disneyLogo} />
            </div>
          </Link>
-         <Link href="#family"><div className="franchise" id="family"></div></Link>
-         <Link href="#adventure"><div className="franchise" id="adventure"></div></Link>
-         <Link href="#marvel"><div className="franchise" id="marvel"></div></Link>
-         <Link href="#pixar"><div className="franchise" id="pixar"></div></Link>
-         <Link href="#classic"><div className="franchise" id="classic"></div></Link>
-         <Link href="#thriller"><div className="franchise" id="thriller"></div></Link>
-         <Link href="#drama"><div className="franchise" id="drama"></div></Link>
+         <Link href="#family">
+        <div className="franchise" id="family">
+          <Image src={pixarLogo} />
+           </div></Link>
+         <Link href="#adventure"><div className="franchise" id="adventure">
+         <Image src={marvelLogo} />
+           </div></Link>
+         <Link href="#marvel"><div className="franchise" id="marvel">
+         <Image src={pixarLogo} />
+           </div></Link>
+         <Link href="#pixar"><div className="franchise" id="pixar">
+         <Image src={disneyLogo} />
+           </div></Link>
+         <Link href="#classic"><div className="franchise" id="classic">
+         <Image src={marvelLogo} />
+           </div></Link>
+         <Link href="#thriller"><div className="franchise" id="thriller">
+         <Image src={pixarLogo} />
+           </div></Link>
+         <Link href="#drama"><div className="franchise" id="drama">
+         <Image src={disneyLogo} />
+           </div></Link>
         </div>
          <Section genre={"Recommended for you"} videos={unSeenVideos(videos)} />
          <Section id="family" genre={"Family"} videos={filterVideos(videos, 'Family')} />
