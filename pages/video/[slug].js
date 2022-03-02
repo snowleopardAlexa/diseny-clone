@@ -47,8 +47,17 @@ return {
     props: {
         video
     }
- }
+  }
+}
 
+const changeToSeen = async(slug) => {
+  await fetch('/api/changeToSeen', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ slug })
+  })
 }
     
 const Video = ({ video }) => {
@@ -58,7 +67,7 @@ const Video = ({ video }) => {
   console.log(video)
 
   return (
-    <>
+    <div className="slug">
       {!watching && <img className="video-image" src={video.thumbnail.url} alt={video.title} />}
       {!watching && <div className="info">
         <p className="tags">{video.tags.join(', ')}</p>
@@ -67,6 +76,7 @@ const Video = ({ video }) => {
         <button 
           className={"btn-play"}
           onClick={() => {
+            changeToSeen(video.slug)
             watching ? setWatching(false) : setWatching(true)
           }}
         >PLAY
@@ -81,7 +91,7 @@ const Video = ({ video }) => {
           onClick={() => watching ? setWatching(false) : null}
       >
       </div>
-    </>
+    </div>
   )
 }
 
